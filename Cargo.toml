@@ -1,0 +1,67 @@
+[workspace]
+members = ["."]
+resolver = "2"
+
+[workspace.package]
+rust-version = "1.94.0"
+
+[workspace.lints.rust]
+unsafe_code     = "warn"
+unused_must_use = "deny"
+
+[workspace.lints.clippy]
+all      = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+wildcard_imports          = "allow"
+module_name_repetitions   = "allow"
+must_use_candidate        = "allow"
+missing_errors_doc        = "allow"
+missing_panics_doc        = "allow"
+items_after_statements    = "allow"
+struct_excessive_bools    = "allow"
+similar_names             = "allow"
+many_single_char_names    = "allow"
+unnecessary_literal_bound = "allow"
+doc_markdown              = "allow"
+ref_option                = "allow"
+fn_params_excessive_bools = "allow"
+needless_pass_by_value    = "allow"
+cast_possible_wrap        = "allow"
+cast_possible_truncation  = "allow"
+cast_precision_loss       = "allow"
+cast_sign_loss            = "allow"
+unwrap_in_result          = "warn"
+panic                     = "warn"
+todo                      = "warn"
+dbg_macro                 = "warn"
+print_stdout              = "warn"
+print_stderr              = "warn"
+
+[package]
+name        = "tokimo-media-server-bridge"
+version     = "0.1.0"
+edition     = "2024"
+license     = "MIT OR Apache-2.0"
+description = "Media server compatibility layer: Jellyfin and Plex API adapters for Tokimo"
+repository  = "https://github.com/tokimo-lab/tokimo-package-media-server-bridge"
+
+[lib]
+name = "tokimo_media_server_bridge"
+path = "src/lib.rs"
+
+[dependencies]
+argon2         = "0.5"
+axum           = { version = "0.8", features = ["json"] }
+chrono         = { version = "0.4", features = ["serde"] }
+http-body-util = "0.1"
+quick-xml      = { version = "0.36", features = ["serialize"] }
+sea-orm        = { version = "2.0.0-rc.38", features = ["sqlx-postgres", "runtime-tokio-rustls", "with-uuid", "with-json", "with-chrono"] }
+serde          = { version = "1", features = ["derive"] }
+serde_json     = "1"
+tokio          = { version = "1", features = ["full"] }
+tracing        = "0.1"
+urlencoding    = "2"
+uuid           = { version = "1", features = ["v4", "serde"] }
+
+[lints]
+workspace = true
