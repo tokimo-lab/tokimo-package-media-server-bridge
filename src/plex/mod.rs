@@ -19,10 +19,7 @@ pub trait PlexAppState: Send + Sync + 'static {
     ) -> impl std::future::Future<Output = axum::response::Response> + Send;
 
     /// Record a new active playback session. Default is a no-op.
-    fn create_playback_session(
-        &self,
-        _session: PlexPlaybackSession,
-    ) -> impl std::future::Future<Output = ()> + Send {
+    fn create_playback_session(&self, _session: PlexPlaybackSession) -> impl std::future::Future<Output = ()> + Send {
         std::future::ready(())
     }
 
